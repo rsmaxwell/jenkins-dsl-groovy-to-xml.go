@@ -25,4 +25,4 @@ testing/
 .vscode/
 
 # Generated files
-/Box/blob.go
+internal/Box/blob.go
