@@ -1,1 +1,1 @@
-# jenkins-job-dsl-groovy-to-xml.go
+# jenkins-job-dsl-groovy-to-xml
