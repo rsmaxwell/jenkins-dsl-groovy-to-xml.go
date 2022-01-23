@@ -1,3 +1,3 @@
-module github.com/rsmaxwell/jenkins-dsl-groovy-to-xml
+module github.com/rsmaxwell/jobdsl-to-xml
 
 go 1.17

@@ -8,9 +8,9 @@ import (
 	"io/ioutil"
 	"strings"
 
-	box "github.com/rsmaxwell/jenkins-dsl-groovy-to-xml/internal/Box"
-	"github.com/rsmaxwell/jenkins-dsl-groovy-to-xml/internal/cmdline"
-	"github.com/rsmaxwell/jenkins-dsl-groovy-to-xml/internal/stream"
+	box "github.com/rsmaxwell/jobdsl-to-xml/internal/Box"
+	"github.com/rsmaxwell/jobdsl-to-xml/internal/cmdline"
+	"github.com/rsmaxwell/jobdsl-to-xml/internal/stream"
 )
 
 func main() {

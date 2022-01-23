@@ -10,7 +10,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/rsmaxwell/jenkins-dsl-groovy-to-xml/internal/codeerror"
+	"github.com/rsmaxwell/jobdsl-to-xml/internal/codeerror"
 )
 
 // HomeDir returns the home directory
