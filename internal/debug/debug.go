@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rsmaxwell/jobdsl-to-xml/internal/basic"
+	"github.com/rsmaxwell/job-to-xml/internal/basic"
 )
 
 // Package type

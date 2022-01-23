@@ -10,7 +10,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/rsmaxwell/jobdsl-to-xml/internal/codeerror"
+	"github.com/rsmaxwell/job-to-xml/internal/codeerror"
 )
 
 // HomeDir returns the home directory

@@ -1,3 +1,3 @@
-module github.com/rsmaxwell/jobdsl-to-xml
+module github.com/rsmaxwell/job-to-xml
 
 go 1.17
