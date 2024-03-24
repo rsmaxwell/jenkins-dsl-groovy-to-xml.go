@@ -33,12 +33,11 @@ func GetArguments() (CommandlineArguments, error) {
 	}
 
 	if *version {
-		fmt.Printf("job-to-xml: Convert jenkins job dsl to the xml configuration for a SEED job\n")
-		fmt.Printf("    Version:   %s\n", basic.Version())
-		fmt.Printf("    BuildDate: %s\n", basic.BuildDate())
-		fmt.Printf("    GitCommit: %s\n", basic.GitCommit())
-		fmt.Printf("    GitBranch: %s\n", basic.GitBranch())
-		fmt.Printf("    GitURL:    %s\n", basic.GitURL())
+		fmt.Printf("Version:   %s\n", basic.Version())
+		fmt.Printf("BuildDate: %s\n", basic.BuildDate())
+		fmt.Printf("GitCommit: %s\n", basic.GitCommit())
+		fmt.Printf("GitBranch: %s\n", basic.GitBranch())
+		fmt.Printf("GitURL:    %s\n", basic.GitURL())
 		os.Exit(0)
 	}
 
