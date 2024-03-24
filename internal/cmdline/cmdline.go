@@ -33,7 +33,7 @@ func GetArguments() (CommandlineArguments, error) {
 	}
 
 	if *version {
-		fmt.Printf("Version:   %s\n", basic.Version())
+		//		fmt.Printf("Version:   %s\n", basic.Version())
 		fmt.Printf("BuildDate: %s\n", basic.BuildDate())
 		fmt.Printf("GitCommit: %s\n", basic.GitCommit())
 		fmt.Printf("GitBranch: %s\n", basic.GitBranch())
