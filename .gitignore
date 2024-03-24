@@ -26,3 +26,4 @@ testing/
 
 # Generated files
 internal/Box/blob.go
+internal/buildinfo/buildinfo.go

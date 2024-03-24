@@ -1,0 +1,29 @@
+// This file is Generated 
+// DO NOT COMMIT 'version.go'
+
+package main
+
+// Version function
+func Version() string {
+	return "{{ .build.id }}"
+}
+
+// BuildDate function
+func BuildDate() string {
+	return "{{ .build.time }}"
+}
+
+// GitCommit function
+func GitCommit() string {
+	return "{{ .git.commit }}"
+}
+
+// GitBranch function
+func GitBranch() string {
+	return "{{ .git.branch }}"
+}
+
+// GitURL function
+func GitURL() string {
+	return "{{ .git.url }}"
+}

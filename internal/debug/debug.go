@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -337,7 +336,7 @@ func (f *Function) Dump(format string, a ...interface{}) *Dump {
 
 	filename := dump.Directory + "/dump.json"
 
-	err = ioutil.WriteFile(filename, json, 0644)
+	err = os.WriteFile(filename, json, 0644)
 	if err != nil {
 		dump.Err = err
 		return dump
@@ -349,7 +348,7 @@ func (f *Function) Dump(format string, a ...interface{}) *Dump {
 	stacktrace := debug.Stack()
 	filename = dump.Directory + "/callstack.txt"
 
-	err = ioutil.WriteFile(filename, stacktrace, 0644)
+	err = os.WriteFile(filename, stacktrace, 0644)
 	if err != nil {
 		dump.Err = err
 		return dump
@@ -393,7 +392,7 @@ func (d *Dump) AddByteArray(filename string, data []byte) {
 	}
 
 	pathname := filepath.Join(d.Directory, filename)
-	err := ioutil.WriteFile(pathname, data, 0644)
+	err := os.WriteFile(pathname, data, 0644)
 	if err != nil {
 		return
 	}
@@ -416,7 +415,7 @@ func Mark() *MarkDumps {
 
 	mark := new(MarkDumps)
 
-	files, err := ioutil.ReadDir(rootDumpDir)
+	files, err := os.ReadDir(rootDumpDir)
 	if err != nil {
 		mark.err = err
 		return mark
@@ -440,7 +439,7 @@ func (mark *MarkDumps) ListNewDumps() ([]*Dump, error) {
 		return nil, mark.err
 	}
 
-	files, err := ioutil.ReadDir(rootDumpDir)
+	files, err := os.ReadDir(rootDumpDir)
 	if err != nil {
 		mark.err = err
 		return nil, err
@@ -466,7 +465,7 @@ func (mark *MarkDumps) ListNewDumps() ([]*Dump, error) {
 // ListDumps method
 func ListDumps() ([]*Dump, error) {
 
-	files, err := ioutil.ReadDir(rootDumpDir)
+	files, err := os.ReadDir(rootDumpDir)
 	if err != nil {
 		return nil, err
 	}
@@ -501,7 +500,7 @@ func (d *Dump) GetInfo() (*DumpInfo, error) {
 
 	infofile := d.Directory + "/dump.json"
 
-	data, err := ioutil.ReadFile(infofile)
+	data, err := os.ReadFile(infofile)
 	if err != nil {
 		return nil, err
 	}
@@ -549,7 +548,7 @@ func (f *Function) DumpError(err error, format string, a ...interface{}) *Dump {
 		fmt.Println("could not marshal error: " + err3.Error())
 	} else {
 		filename := filepath.Join(d.Directory, "error.json")
-		err = ioutil.WriteFile(filename, data, 0644)
+		err = os.WriteFile(filename, data, 0644)
 		if err != nil {
 			f.Errorf("could not write error to dump: %s\n", filename)
 		}

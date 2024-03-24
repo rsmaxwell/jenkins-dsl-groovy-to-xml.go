@@ -7,7 +7,6 @@ import (
 	"bytes"
 	"fmt"
 	"go/format"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -40,7 +39,7 @@ func main() {
 	log.Println("Baking resources... \U0001F4E6")
 
 	if _, err := os.Stat("resources"); os.IsNotExist(err) {
-		log.Fatal("Resources directory does not exists")
+		log.Fatal("Resources directory does not exist")
 	}
 
 	resources := make(map[string][]byte)
@@ -55,7 +54,7 @@ func main() {
 			return nil
 		} else {
 			log.Println(path, "is a file, baking in... \U0001F31F")
-			b, err := ioutil.ReadFile(path)
+			b, err := os.ReadFile(path)
 			if err != nil {
 				log.Printf("Error reading %s: %s", path, err)
 				return err
@@ -86,7 +85,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error formatting generated code", err)
 	}
-	err = ioutil.WriteFile(blob, data, os.ModePerm)
+	err = os.WriteFile(blob, data, os.ModePerm)
 	if err != nil {
 		log.Fatal("Error writing blob file", err)
 	}
