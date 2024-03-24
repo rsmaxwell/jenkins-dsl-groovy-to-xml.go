@@ -1,5 +1,4 @@
 //go:build ignore
-// +build ignore
 
 package main
 
@@ -36,7 +35,7 @@ func FormatByteSlice(sl []byte) string {
 }
 
 func main() {
-	log.Println("Baking resources... \U0001F4E6")
+	log.Println("Baking resources")
 
 	if _, err := os.Stat("resources"); os.IsNotExist(err) {
 		log.Fatal("Resources directory does not exist")
@@ -50,10 +49,10 @@ func main() {
 		}
 		relativePath := filepath.ToSlash(strings.TrimPrefix(path, "resources"))
 		if info.IsDir() {
-			log.Println(path, "is a directory, skipping... \U0001F47B")
+			log.Println(path, "is a directory, skipping")
 			return nil
 		} else {
-			log.Println(path, "is a file, baking in... \U0001F31F")
+			log.Println(path, "is a file, baking in")
 			b, err := os.ReadFile(path)
 			if err != nil {
 				log.Printf("Error reading %s: %s", path, err)
@@ -90,6 +89,6 @@ func main() {
 		log.Fatal("Error writing blob file", err)
 	}
 
-	log.Println("Baking resources done... \U0001F680")
-	log.Println("DO NOT COMMIT box/blob.go \U0001F47B")
+	log.Println("Baking resources done")
+	log.Println("DO NOT COMMIT box/blob.go")
 }

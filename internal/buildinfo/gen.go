@@ -1,4 +1,4 @@
-//go:generate go run gen.go
+//go:build ignore
 
 package main
 
@@ -22,11 +22,11 @@ func getenv(key string, default_value string) string {
 }
 
 func main() {
-	log.Println("Generating source from templates")
+	log.Println("Generating source files")
 
 	build := map[string]interface{}{
 		"id":   getenv("BUILD_ID", "(none)"),
-		"time": time.Now().Format("2006-02-01 15:04:05"),
+		"time": time.Now().Format("2006-01-02 15:04:05"),
 	}
 
 	git := map[string]interface{}{
@@ -56,9 +56,9 @@ func main() {
 			return err
 		}
 
-		relativePath := filepath.ToSlash(strings.TrimPrefix(path, "templates"))
+		temp := filepath.ToSlash(strings.TrimPrefix(path, "templates"))
+		relativePath := filepath.Base(temp)
 		if info.IsDir() {
-			log.Println(path, "is a directory, skipping: ", relativePath)
 			return nil
 		}
 
@@ -68,7 +68,7 @@ func main() {
 			return nil
 		}
 
-		log.Println(path, "is a template file: ", relativePath)
+		log.Println("processing template file: ", relativePath)
 		bytes, err := os.ReadFile(path)
 		if err != nil {
 			log.Printf("Error reading %s: %s", path, err)
@@ -81,8 +81,8 @@ func main() {
 			return err
 		}
 
-		trimmedRelativePath := strings.TrimSuffix(relativePath, filepath.Ext(relativePath))
-		outputFilename := filepath.Join(currentDir, trimmedRelativePath)
+		filename := strings.TrimSuffix(relativePath, filepath.Ext(relativePath))
+		outputFilename := filepath.Join(currentDir, filename)
 		fo, err := os.Create(outputFilename)
 		if err != nil {
 			log.Printf("Error opening output file %s: %s", outputFilename, err)
@@ -90,6 +90,7 @@ func main() {
 		}
 		defer fo.Close()
 
+		log.Println("DO NOT COMMIT the generated file: ", filepath.Join("internal", "buildinfo", filename))
 		err = tmpl.Execute(fo, data)
 		if err != nil {
 			log.Printf("Error reading %s: %s", path, err)
@@ -102,4 +103,6 @@ func main() {
 	if err != nil {
 		log.Fatal("Error walking through templates directory:", err)
 	}
+
+	log.Println("Generating sourcefiles done")
 }

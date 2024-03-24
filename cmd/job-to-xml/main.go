@@ -5,7 +5,6 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"strings"
 
 	box "github.com/rsmaxwell/job-to-xml/internal/Box"
@@ -69,7 +68,7 @@ func xmlTemplate() (string, error) {
 }
 
 func escapedJobDsl(in io.Reader) (string, error) {
-	buf, err := ioutil.ReadAll(in)
+	buf, err := io.ReadAll(in)
 	if err != nil {
 		return "", err
 	}

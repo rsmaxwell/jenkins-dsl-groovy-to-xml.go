@@ -1,7 +1,7 @@
 // This file is Generated 
 // DO NOT COMMIT 'version.go'
 
-package main
+package buildinfo
 
 // Version function
 func Version() string {
