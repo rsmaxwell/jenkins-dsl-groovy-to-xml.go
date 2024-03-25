@@ -7,7 +7,7 @@ import (
 	"io"
 	"strings"
 
-	box "github.com/rsmaxwell/job-to-xml/internal/Box"
+	box "github.com/rsmaxwell/job-to-xml/internal/box"
 	"github.com/rsmaxwell/job-to-xml/internal/cmdline"
 	"github.com/rsmaxwell/job-to-xml/internal/stream"
 )

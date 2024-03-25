@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/rsmaxwell/job-to-xml/internal/basic"
+	"github.com/rsmaxwell/job-to-xml/internal/buildinfo"
 )
 
 // Package type
@@ -312,11 +313,11 @@ func (f *Function) Dump(format string, a ...interface{}) *Dump {
 	info.Timestamp = now
 	info.TimeUnix = t.Unix()
 	info.TimeUnixNano = t.UnixNano()
-	info.Version = basic.Version()
-	info.BuildDate = basic.BuildDate()
-	info.GitCommit = basic.GitCommit()
-	info.GitBranch = basic.GitBranch()
-	info.GitURL = basic.GitURL()
+	info.Version = buildinfo.Version()
+	info.BuildDate = buildinfo.BuildDate()
+	info.GitCommit = buildinfo.GitCommit()
+	info.GitBranch = buildinfo.GitBranch()
+	info.GitURL = buildinfo.GitURL()
 	info.Message = message
 	info.Package = f.pkg.name
 	info.Function = f.name

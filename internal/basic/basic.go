@@ -1,7 +1,6 @@
 package basic
 
 import (
-	"fmt"
 	"os"
 	"os/user"
 	"regexp"
@@ -176,14 +175,6 @@ func GetEnvString(name string, def string) (string, error) {
 		return def, nil
 	}
 	return value, nil
-}
-
-func PrintVersionInfo() {
-	fmt.Printf("Version:   %s\n", Version())
-	fmt.Printf("BuildDate: %s\n", BuildDate())
-	fmt.Printf("GitCommit: %s\n", GitCommit())
-	fmt.Printf("GitBranch: %s\n", GitBranch())
-	fmt.Printf("GitURL:    %s\n", GitURL())
 }
 
 // Equal tells whether a and b contain the same elements.
